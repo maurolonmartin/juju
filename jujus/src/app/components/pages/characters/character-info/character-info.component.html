@@ -1,1 +1,19 @@
-<p>character-info works!</p>
+<div class="row justify-content-center mt-5" *ngIf="character$ | async as character">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
+            <div class="image">
+                <img [src]="character.image" [alt]="character.name" class="card-mg-top">
+            </div>
+            <div class="card-inner">
+                <div class="header">
+                    <h2>{{character.name}}</h2>
+                    <h4 class="text-muted">{{character.gender}}</h4>
+                    <h6 class="text-muted">Current status: {{character.status}}</h6>
+                    <small class="text-muted">Created: {{character.created | date}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-secondary btn-lg" (click)="goBack()">Back</button>
+

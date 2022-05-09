@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" infinite-scroll (scrolled)="onScrollDown()">
     <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let character of characters">
         <div class="card">
             <div class="image">
@@ -12,7 +12,8 @@
                         <h2>{{character.name}}</h2>
                     </a>
                     <h4 class="text-muted">{{character.gender}}</h4>
-                    <small class="text-muted">{{character.created | date}}</small>
+                    <h6 class="text-muted">Current status: {{character.status}}</h6>
+                    <small class="text-muted">Created: {{character.created | date}}</small>
                 </div>
             </div>
         </div>
@@ -21,3 +22,10 @@
         <p>No se encontraron resultados....</p>
     </div>
 </div>
+<button 
+    class="btn btn-dark"
+    [ngClass]="'no-hidden'"
+    *ngIf="showGoUpButton"
+    (click)="onScrollUp()">
+    Subir
+</button>
