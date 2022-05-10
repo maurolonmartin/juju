@@ -62,12 +62,19 @@ export class CharacterListComponent implements OnInit {
   }
 
   getCharactersList():void {
-    this.characterService.searchCharacter(this.query, this.pageNumber).
+    this.characterService.searchCharacters(this.query, this.pageNumber).
       pipe(take(1)).subscribe((response: any) => {
         const {info, results} = response;
+        let firtsEpisode:string;
         this.characters = [...this.characters, ...results];
+        this.characters.forEach(character => {
+          firtsEpisode = character.episode[0]
+          this.characterService.getEpisodeName(firtsEpisode).subscribe((res) =>{
+            character.episodeName =  res.name;
+          });
+        })
         this.info = info;
-      });
+    });
   }
 
   urlOnChanges(): void {
@@ -77,5 +84,6 @@ export class CharacterListComponent implements OnInit {
       this.getFilterCharacter();
     });
   }
+
 
 }

@@ -12,11 +12,15 @@ export class CharacterServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  searchCharacter(query='', page=1) {
-    return this.httpClient.get<Character[]>(`${environment.apiURL}/?name=${query}&page=${page}`);
+  searchCharacters(query='', page=1) {
+    return this.httpClient.get<Character[]>(`${environment.apiURL}character/?name=${query}&page=${page}`);
   }
 
   getCharacterInfo(id: number) {
-    return this.httpClient.get<Character>(`${environment.apiURL}/${id}`);
+    return this.httpClient.get<Character>(`${environment.apiURL}character/${id}`);
+  }
+
+  getEpisodeName(url: string) {
+    return this.httpClient.get<any>(url)
   }
 }

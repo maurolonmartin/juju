@@ -11,9 +11,12 @@
                     <a [routerLink]="['/character-info', character.id]">
                         <h2>{{character.name}}</h2>
                     </a>
-                    <h4 class="text-muted">{{character.gender}}</h4>
-                    <h6 class="text-muted">Current status: {{character.status}}</h6>
-                    <small class="text-muted">Created: {{character.created | date}}</small>
+                    <h4 class="text-muted">Genero: {{character.gender}}</h4>
+                    <h4 class="text-muted">Primera aparición: </h4>
+                    <h3 class="text-muted">{{character.episodeName}}</h3>
+                    <h6 class="text-muted">Status: {{character.status}}</h6>
+                    <h6 class="text-muted" >Ciudad actual: {{character.location.name}}</h6>
+                    <small class="text-muted">Creado: {{character.created | date}}</small>
                 </div>
             </div>
         </div>
